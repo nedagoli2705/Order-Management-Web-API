@@ -9,9 +9,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WriteModel", "WriteModel", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{E6347692-268D-4734-850B-893D053FDBFA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Application", "..\BookApi\Framework\Framework.Application\Framework.Application.csproj", "{BFC36CA9-321B-4C71-A30C-4DB83B99C617}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFC36CA9-321B-4C71-A30C-4DB83B99C617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC36CA9-321B-4C71-A30C-4DB83B99C617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC36CA9-321B-4C71-A30C-4DB83B99C617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC36CA9-321B-4C71-A30C-4DB83B99C617}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BFC36CA9-321B-4C71-A30C-4DB83B99C617} = {E6347692-268D-4734-850B-893D053FDBFA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCC01E9F-B040-4758-BCD9-7E0F2987832E}
