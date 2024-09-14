@@ -1,6 +1,6 @@
 ﻿using Framework.Persistence;
 using Microsoft.EntityFrameworkCore;
-namespace OrderManagementWebApi.Persistence
+namespace OrderManagement.Persistence
 {
     public class CustomerDbContext : DbContextBase
     {

@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using OrderManagementWebApi.Persistence;
+using OrderManagement.Persistence;
 using Framework.Application;
 using Framework.AssemblyHelper;
 using Framework.Core.Application;
@@ -99,7 +99,7 @@ namespace Framework.DependencyInjection
             var repositories = assemblyHelper.GetTypes(typeof(FacadeCommandBase)).Distinct();
             foreach (var repository in repositories)
             {
-                var baseInterfaces = repository.GetInterfaces().Where(a => a.IsGenericType == false && a.Namespace.StartsWith(nameof(OrderManagementWebApi)));
+                var baseInterfaces = repository.GetInterfaces().Where(a => a.IsGenericType == false && a.Namespace.StartsWith(nameof(OrderManagement)));
                 foreach (var baseInterface in baseInterfaces)
                     services.AddScoped(baseInterface, repository);
             }
