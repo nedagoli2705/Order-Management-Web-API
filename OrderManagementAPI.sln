@@ -57,6 +57,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.CustomerCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.CustomerContext.Infrastructure.Persistence", "WriteModel\CustomerContext\Infrastructure\OrderManagement.CustomerContext.Infrastructure.Persistence\OrderManagement.CustomerContext.Infrastructure.Persistence.csproj", "{9CD9D99A-1E3F-4398-8721-018510422641}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.CustomerContext.Resources", "WriteModel\CustomerContext\OrderManagement.CustomerContext.Resources\OrderManagement.CustomerContext.Resources.csproj", "{1FD1FA6E-BCCC-43B3-BDB9-0F0093DCC361}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{9CD9D99A-1E3F-4398-8721-018510422641}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CD9D99A-1E3F-4398-8721-018510422641}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CD9D99A-1E3F-4398-8721-018510422641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FD1FA6E-BCCC-43B3-BDB9-0F0093DCC361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FD1FA6E-BCCC-43B3-BDB9-0F0093DCC361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FD1FA6E-BCCC-43B3-BDB9-0F0093DCC361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FD1FA6E-BCCC-43B3-BDB9-0F0093DCC361}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -163,6 +169,7 @@ Global
 		{72EAF5BF-8627-4ABB-8092-FF1C2380B74A} = {8588EC86-5104-469C-B4D8-A59D2B66166B}
 		{73283B1B-45E4-428E-BB27-32CFD172AB78} = {8588EC86-5104-469C-B4D8-A59D2B66166B}
 		{9CD9D99A-1E3F-4398-8721-018510422641} = {19BB7F33-2540-4E8E-98EE-6CA48B9F96D2}
+		{1FD1FA6E-BCCC-43B3-BDB9-0F0093DCC361} = {D666EFB5-006B-47BF-9191-68A33DE92AAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCC01E9F-B040-4758-BCD9-7E0F2987832E}
