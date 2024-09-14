@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Framework\Framework.Facade\Framework.Facade.csproj" />
+    <ProjectReference Include="..\OrderManagement.CustomerContext.Facade.Contract\OrderManagement.CustomerContext.Facade.Contract.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\ApplicationService\OrderManagement.CustomerContext.ApplicationService.Contract\OrderManagement.CustomerContext.ApplicationService.Contract.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Framework\Framework.DependancyInjection\Framework.DependencyInjection.csproj" />
+    <ProjectReference Include="..\ApplicationService\OrderManagement.CustomerContext.ApplicationService.Contract\OrderManagement.CustomerContext.ApplicationService.Contract.csproj" />
+    <ProjectReference Include="..\ApplicationService\OrderManagement.CustomerContext.ApplicationService\OrderManagement.CustomerContext.ApplicationService.csproj" />
+    <ProjectReference Include="..\Domain\OrderManagement.CustomerContext.Domain\OrderManagement.CustomerContext.Domain.csproj" />
+    <ProjectReference Include="..\Facade\OrderManagement.CustomerContext.Facade.Contract\OrderManagement.CustomerContext.Facade.Contract.csproj" />
+    <ProjectReference Include="..\Facade\OrderManagement.CustomerContext.Facade\OrderManagement.CustomerContext.Facade.csproj" />
+    <ProjectReference Include="..\Infrastructure\OrderManagement.CustomerContext.Infrastructure.Persistence\OrderManagement.CustomerContext.Infrastructure.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
