@@ -8,7 +8,8 @@ using Framework.Core.Domain;
 var builder = WebApplication.CreateBuilder(args);
 
 var assemblyHelper = new AssemblyHelper(nameof(OrderManagement));
-Registrar(builder.Services, assemblyHelper, builder.Environment.EnvironmentName);
+Registrar(builder, assemblyHelper, builder.Environment.EnvironmentName);
+
 
 var mvcBuilder = builder.Services.AddMvc(option =>
 {
@@ -60,16 +61,14 @@ app.UseMvc();
 
 app.Run();
 
-void Registrar(IServiceCollection services, AssemblyHelper assemblyHelper, string envName)
+void Registrar(WebApplicationBuilder builder, AssemblyHelper assemblyHelper, string envName)
 {
-    var builder = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory)
-        .AddJsonFile("AppSettings.json", true, true)
-        .AddJsonFile($"AppSettings.{envName}.json", true, true);
 
-    var connectionString = builder.Build().GetConnectionString("DefaultConnection");
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
     var registrars = assemblyHelper.GetInstanceByInterface(typeof(IRegistrar));
     foreach (IRegistrar registrar in registrars)
-        registrar.Register(services, connectionString);
+        registrar.Register(builder.Services, connectionString);
 }
 
 

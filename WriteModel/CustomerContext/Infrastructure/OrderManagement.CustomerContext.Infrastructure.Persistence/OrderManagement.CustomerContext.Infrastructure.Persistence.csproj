@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Customers\Mapping\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\Framework\Framework.Persistence\Framework.Persistence.csproj" />
     <ProjectReference Include="..\..\Domain\OrderManagement.CustomerContext.Domain\OrderManagement.CustomerContext.Domain.csproj" />
   </ItemGroup>

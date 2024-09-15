@@ -24,6 +24,7 @@ namespace OrderManagement.CustomerContext.ApplicationService.Customers
         public void Execute(CustomerCreateCommand command)
         {
             var customer = new Customer(nationalCodeDuplicationChecker, command.FirstName, command.LastName, command.NationalCode);
+            customerRepository.CreateCustomer(customer);
         }
     }
 }

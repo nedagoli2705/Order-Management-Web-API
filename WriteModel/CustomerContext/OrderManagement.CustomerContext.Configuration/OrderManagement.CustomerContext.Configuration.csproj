@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Framework\Framework.DependancyInjection\Framework.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\OrderManagement.Persistence\OrderManagement.Persistence.csproj" />
     <ProjectReference Include="..\ApplicationService\OrderManagement.CustomerContext.ApplicationService.Contract\OrderManagement.CustomerContext.ApplicationService.Contract.csproj" />
     <ProjectReference Include="..\ApplicationService\OrderManagement.CustomerContext.ApplicationService\OrderManagement.CustomerContext.ApplicationService.csproj" />
     <ProjectReference Include="..\Domain\OrderManagement.CustomerContext.Domain.Services\OrderManagement.CustomerContext.Domain.Services.csproj" />
