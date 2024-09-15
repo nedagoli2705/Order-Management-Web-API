@@ -5,5 +5,6 @@ namespace OrderManagement.CustomerContext.Facade.Contract
     public interface ICustomerCommandFacade 
     {
         void CreateCustomer(CustomerCreateCommand command);
+        void UpdateCustomer(CustomerUpdateCommand command);
     }
 }

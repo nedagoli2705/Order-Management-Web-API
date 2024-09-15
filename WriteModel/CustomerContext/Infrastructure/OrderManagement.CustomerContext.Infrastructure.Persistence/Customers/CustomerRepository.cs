@@ -22,5 +22,15 @@ namespace OrderManagement.CustomerContext.Infrastructure.Persistence.Customers
         {
             return Set.Any(predicate);
         }
+
+        public Customer GetById(Guid customerId)
+        {
+            return Set.Single(a => a.Id == customerId);
+        }
+
+        public void UpdateCustomer(Customer customer)
+        {
+            Update(customer);
+        }
     }
 }

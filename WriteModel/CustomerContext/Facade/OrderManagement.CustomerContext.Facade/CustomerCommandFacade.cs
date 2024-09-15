@@ -19,5 +19,11 @@ namespace OrderManagement.CustomerContext.Facade
         {
             CommandBus.Dispatch(command);
         }
+
+        [HttpPost]
+        public void UpdateCustomer(CustomerUpdateCommand command)
+        {
+            CommandBus.Dispatch(command);
+        }
     }
 }

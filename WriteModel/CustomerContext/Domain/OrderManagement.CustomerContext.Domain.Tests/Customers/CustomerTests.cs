@@ -97,6 +97,42 @@ namespace OrderManagement.CustomerContext.Domain.Tests.Customers
                 CreateDefaultCustomer(mockChecker.Object, nationalCode: "1212312123"));
         }
 
+        [Fact]
+        public void UpdateCustomerWithValidData_ShouldUpdated()
+        {
+            // Arrange
+            var customer = CreateDefaultCustomer();
+
+            // Act
+            customer.Update(MockDefaultNationalCodeDuplicationChecker(), "Jane", "Doe", "1234567890");
+
+            // Assert
+            Assert.Equal("Jane", customer.FirstName);
+            Assert.Equal("Doe", customer.LastName);
+            Assert.Equal("1234567890", customer.NationalCode);
+        }
+
+        [Theory]
+        [InlineData("1010101010")]
+        public void NationalCodeIsDuplicatedWhenUpdating_ThrowException(string _nationalCode)
+        {
+            var mockChecker = new Mock<INationalCodeDuplicationChecker>();
+            mockChecker.Setup(x => x.IsDuplicated(_nationalCode)).Returns(true);
+
+            Assert.Throws<DuplicatedNationalCodeException>(() =>
+                CreateDefaultCustomer(mockChecker.Object, nationalCode: _nationalCode));
+        }
+
+        [Fact]
+        public void UpdateCustomerWithPreviousNationalCode_ShouldNotChangeWithoutDuplicatedExecption()
+        {
+            var customer = CreateDefaultCustomer(nationalCode: "1010101010");
+
+            customer.Update(MockDefaultNationalCodeDuplicationChecker(), "Jane", "Doe", "1010101010");
+
+            Assert.Equal("1010101010", customer.NationalCode);
+        }
+
         private Customer CreateDefaultCustomer(
             INationalCodeDuplicationChecker nationalCodeDuplicationChecker = null,
             string firstName = "Neda",

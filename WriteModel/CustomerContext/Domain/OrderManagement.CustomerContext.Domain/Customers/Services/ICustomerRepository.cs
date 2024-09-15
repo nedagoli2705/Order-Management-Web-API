@@ -11,5 +11,7 @@ namespace OrderManagement.CustomerContext.Domain.Customers.Services
     {
         void CreateCustomer(Customer customer);
         bool Contains(Expression<Func<Customer, bool>> predicate);
+        Customer GetById(Guid customerId);
+        void UpdateCustomer(Customer customer);
     }
 }

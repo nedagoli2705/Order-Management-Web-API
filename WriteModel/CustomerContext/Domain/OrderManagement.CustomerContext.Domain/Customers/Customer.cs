@@ -28,6 +28,39 @@ namespace OrderManagement.CustomerContext.Domain.Customers
             SetNationalCode(nationalCode);
         }
 
+
+
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public string NationalCode { get; private set; }
+
+
+        public void Update(INationalCodeDuplicationChecker nationalCodeDuplicationChecker, 
+            string firstName,
+            string lastName,
+            string nationalCode)
+        {
+            SetFirstName(firstName);
+            SetLastName(lastName);
+            UpdateNationalCode(nationalCode, nationalCodeDuplicationChecker);
+        }
+
+        public IEnumerable<Expression<Func<Customer, object>>> GetAggregateExpressions()
+        {
+            yield return null;
+        }
+
+        private void UpdateNationalCode(string nationalCode, INationalCodeDuplicationChecker nationalCodeDuplicationChecker)
+        {
+            if (NationalCode != nationalCode)
+            {
+                if (nationalCodeDuplicationChecker.IsDuplicated(nationalCode))
+                    throw new DuplicatedNationalCodeException();
+
+                NationalCode = nationalCode;
+            }
+        }
+
         private void SetNationalCode(string nationalCode)
         {
             if (string.IsNullOrWhiteSpace(nationalCode))
@@ -64,15 +97,6 @@ namespace OrderManagement.CustomerContext.Domain.Customers
                 throw new FirstNameIsRequiredException();
 
             FirstName = firstName;
-        }
-
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public string NationalCode { get; private set; }
-
-        public IEnumerable<Expression<Func<Customer, object>>> GetAggregateExpressions()
-        {
-            yield return null;
         }
     }
 }
