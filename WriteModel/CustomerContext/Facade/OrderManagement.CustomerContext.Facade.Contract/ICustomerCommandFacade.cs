@@ -6,5 +6,6 @@ namespace OrderManagement.CustomerContext.Facade.Contract
     {
         void CreateCustomer(CustomerCreateCommand command);
         void UpdateCustomer(CustomerUpdateCommand command);
+        void DeleteCustomer(CustomerDeleteCommand command);
     }
 }

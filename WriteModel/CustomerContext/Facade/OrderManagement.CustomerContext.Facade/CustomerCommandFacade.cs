@@ -25,5 +25,11 @@ namespace OrderManagement.CustomerContext.Facade
         {
             CommandBus.Dispatch(command);
         }
+
+        [HttpDelete]
+        public void DeleteCustomer(CustomerDeleteCommand command)
+        {
+            CommandBus.Dispatch(command);
+        }
     }
 }

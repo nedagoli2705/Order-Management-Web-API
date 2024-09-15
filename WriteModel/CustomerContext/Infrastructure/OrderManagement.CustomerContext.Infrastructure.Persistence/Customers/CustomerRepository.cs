@@ -32,5 +32,10 @@ namespace OrderManagement.CustomerContext.Infrastructure.Persistence.Customers
         {
             Update(customer);
         }
+
+        public void DeleteCustomer(Customer customer)
+        {
+            Delete(customer);
+        }
     }
 }
