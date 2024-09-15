@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DuplicatedNationalCode" xml:space="preserve">
+    <value>National code is Duplicated.</value>
+  </data>
   <data name="FirstNameIsRequired" xml:space="preserve">
     <value>First name is required.</value>
   </data>
   <data name="LastNameIsRequired" xml:space="preserve">
     <value>Last name is required.</value>
+  </data>
+  <data name="NationalCodeIsRequired" xml:space="preserve">
+    <value>National code is required.</value>
+  </data>
+  <data name="NationalCodeLengthShouldBeTenCharacters" xml:space="preserve">
+    <value>National code length should be ten characters.</value>
+  </data>
+  <data name="NationalCodeShouldBeDigitCharacters" xml:space="preserve">
+    <value>National code should be digit characters.</value>
   </data>
 </root>

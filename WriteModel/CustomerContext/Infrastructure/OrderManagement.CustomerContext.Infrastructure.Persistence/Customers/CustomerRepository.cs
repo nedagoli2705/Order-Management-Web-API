@@ -2,18 +2,25 @@
 using Framework.Persistence;
 using OrderManagement.CustomerContext.Domain.Customers;
 using OrderManagement.CustomerContext.Domain.Customers.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
+
 
 namespace OrderManagement.CustomerContext.Infrastructure.Persistence.Customers
 {
     public class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository
     {
-        protected CustomerRepository(IDbContext dbContext) : base(dbContext)
+        public CustomerRepository(IDbContext dbContext) : base(dbContext)
         {
+        }
+
+        public void CreateCustomer(Customer customer)
+        {
+            Create(customer);
+        }
+
+        public bool Contains(Expression<Func<Customer, bool>> predicate)
+        {
+            return Set.Any(predicate);
         }
     }
 }

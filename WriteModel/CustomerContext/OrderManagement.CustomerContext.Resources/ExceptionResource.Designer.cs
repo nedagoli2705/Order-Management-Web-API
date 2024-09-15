@@ -61,6 +61,15 @@ namespace OrderManagement.CustomerContext.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to National code is Duplicated..
+        /// </summary>
+        public static string DuplicatedNationalCode {
+            get {
+                return ResourceManager.GetString("DuplicatedNationalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name is required..
         /// </summary>
         public static string FirstNameIsRequired {
@@ -75,6 +84,33 @@ namespace OrderManagement.CustomerContext.Resources {
         public static string LastNameIsRequired {
             get {
                 return ResourceManager.GetString("LastNameIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National code is required..
+        /// </summary>
+        public static string NationalCodeIsRequired {
+            get {
+                return ResourceManager.GetString("NationalCodeIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National code length should be ten characters..
+        /// </summary>
+        public static string NationalCodeLengthShouldBeTenCharacters {
+            get {
+                return ResourceManager.GetString("NationalCodeLengthShouldBeTenCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National code should be digit characters..
+        /// </summary>
+        public static string NationalCodeShouldBeDigitCharacters {
+            get {
+                return ResourceManager.GetString("NationalCodeShouldBeDigitCharacters", resourceCulture);
             }
         }
     }

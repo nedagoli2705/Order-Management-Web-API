@@ -1,19 +1,53 @@
 ﻿using Framework.Core.Domain;
 using Framework.Domain;
 using OrderManagement.CustomerContext.Domain.Customers.Exceptions;
+using OrderManagement.CustomerContext.Domain.Customers.Services;
 using System.Linq.Expressions;
 
 namespace OrderManagement.CustomerContext.Domain.Customers
 {
     public class Customer : EntityBase<Customer>, IAggregateRoot<Customer>
     {
+        private readonly INationalCodeDuplicationChecker nationalCodeDuplicationChecker;
 
-        public Customer(string firstName,
-            string lastName)
+        public Customer()
         {
+            
+        }
+
+        public Customer(INationalCodeDuplicationChecker nationalCodeDuplicationChecker, 
+            string firstName,
+            string lastName,
+            string nationalCode)
+        {
+            this.nationalCodeDuplicationChecker = nationalCodeDuplicationChecker;
+
             SetId();
             SetFirstName(firstName);
             SetLastName(lastName);
+            SetNationalCode(nationalCode);
+        }
+
+        private void SetNationalCode(string nationalCode)
+        {
+            if (string.IsNullOrWhiteSpace(nationalCode))
+            {
+                throw new NationalCodeIsRequiredException();
+            }
+            if (nationalCode.Length != 10)
+            {
+                throw new NationalCodeLengthShouldBeTenCharactersException();
+            }
+            if (!nationalCode.All(char.IsDigit))
+            {
+                throw new NationalCodeShouldBeDigitCharactersException();
+            }
+            if (nationalCodeDuplicationChecker.IsDuplicated(nationalCode))
+            {
+                throw new DuplicatedNationalCodeException();
+            }
+
+            NationalCode = nationalCode;
         }
 
         private void SetLastName(string lastName)
@@ -34,6 +68,7 @@ namespace OrderManagement.CustomerContext.Domain.Customers
 
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
+        public string NationalCode { get; private set; }
 
         public IEnumerable<Expression<Func<Customer, object>>> GetAggregateExpressions()
         {
