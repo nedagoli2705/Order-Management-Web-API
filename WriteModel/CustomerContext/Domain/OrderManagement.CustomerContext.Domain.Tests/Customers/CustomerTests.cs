@@ -155,6 +155,27 @@ namespace OrderManagement.CustomerContext.Domain.Tests.Customers
         }
 
         [Fact]
+        public void RemoveOrder_OrderIsRemovedFromList()
+        {
+            // Arrange
+            var customer = CreateDefaultCustomer();
+            var mockCustomerExistanceChecker = new Mock<ICustomerExistanceChecker>();
+            mockCustomerExistanceChecker.Setup(x => x.IsCustomerExisted(It.IsAny<Guid>())).Returns(true);
+
+            var order = new Order(mockCustomerExistanceChecker.Object, Guid.NewGuid(), DateTime.Now, new List<OrderItem>() {
+                new OrderItem("Product1", 5)
+            });
+
+            customer.AddOrder(order);
+
+            // Act
+            customer.RemoveOrder(order.Id);
+
+            // Assert
+            Assert.DoesNotContain(order, customer.Orders);
+        }
+
+        [Fact]
         public void AddNullOrder_ThrowException()
         {
             // Arrange

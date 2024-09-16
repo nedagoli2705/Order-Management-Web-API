@@ -84,6 +84,24 @@ namespace OrderManagement.CustomerContext.Domain.Tests.Customers
                 CreateDefaultOrder(customerId: Guid.NewGuid(), orderItems: new List<OrderItem>()));
         }
 
+        [Fact]
+        public void UpdateOrderWithValidData_ShouldUpdated()
+        {
+            // Arrange
+            var orderItems = new List<OrderItem>() {
+                new OrderItem("Product1", 5)
+            };
+            var order = CreateDefaultOrder(customerId: Guid.NewGuid(), orderItems: orderItems);
+            orderItems.Add(new OrderItem("Product2", 10));
+            // Act
+            order.UpdateOrder(new DateTime(2021,5,10), orderItems);
+
+            // Assert
+            Assert.Equal(new DateTime(2021, 5, 10), order.OrderDate);
+            Assert.Equal(orderItems, order.Items);
+            Assert.Equal(15, order.TotalAmount);
+        }
+
 
         private Order CreateDefaultOrder(ICustomerExistanceChecker customerExistanceChecker = null,
             Guid customerId = new Guid(),

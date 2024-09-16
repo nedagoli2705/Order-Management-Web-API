@@ -34,6 +34,7 @@ namespace OrderManagement.CustomerContext.ApplicationService.Customers
             var order = new Order(customerExistanceChecker, customer.Id, command.OrderDate, items);
             customer.AddOrder(order);
 
+            customerRepository.AddOrder(order);
             customerRepository.UpdateCustomer(customer);
         }
     }

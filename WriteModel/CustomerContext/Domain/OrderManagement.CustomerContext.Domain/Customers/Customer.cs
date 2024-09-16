@@ -56,6 +56,12 @@ namespace OrderManagement.CustomerContext.Domain.Customers
             Orders.Add(order);
         }
 
+        public void RemoveOrder(Guid orderId)
+        {
+            var order = Orders.FirstOrDefault(o => o.Id == orderId);
+            Orders.Remove(order);
+        }
+
         public IEnumerable<Expression<Func<Customer, object>>> GetAggregateExpressions()
         {
             yield return c => c.Orders;

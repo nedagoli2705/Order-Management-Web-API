@@ -8,5 +8,7 @@ namespace OrderManagement.CustomerContext.Facade.Contract
         void UpdateCustomer(CustomerUpdateCommand command);
         void DeleteCustomer(CustomerDeleteCommand command);
         void AddOrderToCustomer(AddOrderToCustomerCommand command);
+        void UpdateOrderOfCustomer(UpdateOrderOfCustomerCommand command);
+        void DeleteOrderFromCustomer(DeleteOrderFromCustomerCommand command);
     }
 }

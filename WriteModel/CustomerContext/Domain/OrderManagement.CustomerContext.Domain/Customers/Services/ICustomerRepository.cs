@@ -14,5 +14,6 @@ namespace OrderManagement.CustomerContext.Domain.Customers.Services
         Customer GetById(Guid customerId);
         void UpdateCustomer(Customer customer);
         void DeleteCustomer(Customer customer);
+        void AddOrder(Order order);
     }
 }

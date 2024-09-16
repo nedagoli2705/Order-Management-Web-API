@@ -37,5 +37,17 @@ namespace OrderManagement.CustomerContext.Facade
         {
             CommandBus.Dispatch(command);
         }
+
+        [HttpPatch]
+        public void UpdateOrderOfCustomer(UpdateOrderOfCustomerCommand command)
+        {
+            CommandBus.Dispatch(command);
+        }
+
+        [HttpDelete]
+        public void DeleteOrderFromCustomer(DeleteOrderFromCustomerCommand command)
+        {
+            CommandBus.Dispatch(command);
+        }
     }
 }

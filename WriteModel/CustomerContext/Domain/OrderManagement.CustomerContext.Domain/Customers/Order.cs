@@ -19,7 +19,6 @@ namespace OrderManagement.CustomerContext.Domain.Customers
             List<OrderItem> items)
         {
             this.customerExistanceChecker = customerExistanceChecker;
-            TotalAmount = 0;
 
             SetId();
             SetCustomerId(customerId);
@@ -35,8 +34,17 @@ namespace OrderManagement.CustomerContext.Domain.Customers
         public decimal TotalAmount { get; private set; }
         public List<OrderItem> Items { get; private set; }
 
+        public void UpdateOrder(DateTime orderDate, List<OrderItem> items)
+        {
+            SetOrderDate(orderDate);
+
+            
+            SetItems(items);
+        }
+
         private void SetItems(List<OrderItem> items)
         {
+            TotalAmount = 0;
             if (items.Count == 0)
             {
                 throw new OrderShouldHaveAtLeastOneItemException();
