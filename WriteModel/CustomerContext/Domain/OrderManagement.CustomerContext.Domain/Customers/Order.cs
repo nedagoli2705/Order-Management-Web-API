@@ -1,13 +1,20 @@
 ﻿using Framework.Domain;
 using OrderManagement.CustomerContext.Domain.Customers.Exceptions;
+using OrderManagement.CustomerContext.Domain.Customers.Services;
 
 
 namespace OrderManagement.CustomerContext.Domain.Customers
 {
     public class Order : EntityBase<Order>
     {
-        public Order(Guid customerId)
+        private readonly ICustomerExistanceChecker customerExistanceChecker;
+
+
+        public Order(ICustomerExistanceChecker customerExistanceChecker,
+            Guid customerId)
         {
+            this.customerExistanceChecker = customerExistanceChecker;
+
             SetId();
             SetCustomerId(customerId);
         }
@@ -17,6 +24,10 @@ namespace OrderManagement.CustomerContext.Domain.Customers
             if (customerId == Guid.Empty)
             {
                 throw new CustomerIsRequiredException();
+            }
+            if (!customerExistanceChecker.IsCustomerExisted(customerId))
+            {
+                throw new CustomerISNotExistException();
             }
 
             CustomerId = customerId;

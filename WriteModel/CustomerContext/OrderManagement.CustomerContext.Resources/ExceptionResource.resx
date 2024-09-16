@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CustomerISNotExist" xml:space="preserve">
+    <value>Customer IS Not Exist.</value>
+  </data>
   <data name="CustomerIsRequired" xml:space="preserve">
     <value>Customer Is Required.</value>
   </data>

@@ -61,6 +61,15 @@ namespace OrderManagement.CustomerContext.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer IS Not Exist..
+        /// </summary>
+        public static string CustomerISNotExist {
+            get {
+                return ResourceManager.GetString("CustomerISNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer Is Required..
         /// </summary>
         public static string CustomerIsRequired {

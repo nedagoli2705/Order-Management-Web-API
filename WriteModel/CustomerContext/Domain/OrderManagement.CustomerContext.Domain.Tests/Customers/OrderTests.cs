@@ -1,5 +1,7 @@
-﻿using OrderManagement.CustomerContext.Domain.Customers;
+﻿using Moq;
+using OrderManagement.CustomerContext.Domain.Customers;
 using OrderManagement.CustomerContext.Domain.Customers.Exceptions;
+using OrderManagement.CustomerContext.Domain.Customers.Services;
 
 namespace OrderManagement.CustomerContext.Domain.Tests.Customers
 {
@@ -8,7 +10,7 @@ namespace OrderManagement.CustomerContext.Domain.Tests.Customers
         [Fact]
         public void Id_NotSetToEmpty()
         {
-            var order = new Order(new Guid());
+            var order = CreateDefaultOrder(customerId: Guid.NewGuid());
 
             Assert.NotEqual(Guid.Empty, order.Id);
         }
@@ -16,7 +18,7 @@ namespace OrderManagement.CustomerContext.Domain.Tests.Customers
         [Fact]
         public void CustomerId_NotSetToEmpty()
         {
-            var order = new Order(Guid.NewGuid());
+            var order = CreateDefaultOrder(customerId: Guid.NewGuid());
 
             Assert.NotEqual(Guid.Empty, order.CustomerId);
         }
@@ -24,23 +26,32 @@ namespace OrderManagement.CustomerContext.Domain.Tests.Customers
         [Fact]
         public void CustomerIdIsEmpty_ThrowException()
         {
-            Assert.Throws<CustomerIsRequiredException>(() => new Order(new Guid()));
+            Assert.Throws<CustomerIsRequiredException>(() => CreateDefaultOrder(customerId: new Guid()));
         }
 
-        //[Fact]
-        //public void CustomerId_ShouldSetCorrectly()
-        //{
-        //    var order = new Order();
+        [Fact]
+        public void CustomerIdIsNotValid_ThrowException()
+        {
+            var mockChecker = new Mock<ICustomerExistanceChecker>();
+            mockChecker.Setup(x => x.IsCustomerExisted(Guid.NewGuid())).Returns(false);
 
-        //    Assert.NotEqual(Guid.Empty, order.Id);
-        //}
+            Assert.Throws<CustomerISNotExistException>(() => 
+                CreateDefaultOrder(customerExistanceChecker: mockChecker.Object, customerId: Guid.NewGuid()));
+        }
 
-        //[Fact]
-        //public void CustomerId_ShouldBeValid()
-        //{
-        //    var order = new Order();
+        private Order CreateDefaultOrder(ICustomerExistanceChecker customerExistanceChecker = null,
+            Guid customerId = new Guid())
+        {
+            customerExistanceChecker ??= MockCustomerExistanceChecker();
 
-        //    Assert.NotEqual(Guid.Empty, order.Id);
-        //}
+            return new Order(customerExistanceChecker, customerId);
+        }
+
+        private ICustomerExistanceChecker MockCustomerExistanceChecker()
+        {
+            var mockChecker = new Mock<ICustomerExistanceChecker>();
+            mockChecker.Setup(x => x.IsCustomerExisted(It.IsAny<Guid>())).Returns(true);
+            return mockChecker.Object;
+        }
     }
 }
