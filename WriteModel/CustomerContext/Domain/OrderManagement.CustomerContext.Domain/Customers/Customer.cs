@@ -26,6 +26,7 @@ namespace OrderManagement.CustomerContext.Domain.Customers
             SetFirstName(firstName);
             SetLastName(lastName);
             SetNationalCode(nationalCode);
+            Orders = new List<Order>();
         }
 
 
@@ -33,6 +34,7 @@ namespace OrderManagement.CustomerContext.Domain.Customers
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string NationalCode { get; private set; }
+        public ICollection<Order> Orders { get; private set; }
 
 
         public void Update(INationalCodeDuplicationChecker nationalCodeDuplicationChecker, 
@@ -45,9 +47,24 @@ namespace OrderManagement.CustomerContext.Domain.Customers
             UpdateNationalCode(nationalCode, nationalCodeDuplicationChecker);
         }
 
+        public void AddOrder(Order order)
+        {
+            if (order == null)
+            {
+                throw new UnableToAddNullOrderToCustomerException();
+            }
+            Orders.Add(order);
+        }
+
+        public void RemoveOrder(Guid orderId)
+        {
+            var order = Orders.FirstOrDefault(o => o.Id == orderId);
+            Orders.Remove(order);
+        }
+
         public IEnumerable<Expression<Func<Customer, object>>> GetAggregateExpressions()
         {
-            yield return null;
+            yield return c => c.Orders;
         }
 
         private void UpdateNationalCode(string nationalCode, INationalCodeDuplicationChecker nationalCodeDuplicationChecker)

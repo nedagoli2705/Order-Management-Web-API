@@ -57,5 +57,73 @@ namespace OrderManagement.ReadModel.Queries.Facade.Customers
 
             return mapper.Map<CustomerDto, Customer>(customers);
         }
+
+        [HttpGet]
+        public IList<Order> GetOrders()
+        {
+            var cacheKey = "all_orders";
+            IList<Order> orders;
+
+            var cachedOrders = cache.GetString(cacheKey);
+            if (cachedOrders != null)
+            {
+                logger.LogInformation("All Orders retrieved from cache.");
+                orders = JsonSerializer.Deserialize<List<Order>>(cachedOrders);
+            }
+            else
+            {
+                // Fetch the customers from SQL Server if not found in cache
+                orders = db.Orders
+                    .ToList();
+
+                var orderItems = orders.Select(a => a.Items).ToList();
+
+                if (orders.Any())
+                {
+                    logger.LogInformation("All Orders retrieved from database.");
+                    // Cache the customer data with an expiration time of 5 minutes
+                    var cacheEntryOptions = new DistributedCacheEntryOptions()
+                        .SetSlidingExpiration(TimeSpan.FromMinutes(5));
+
+                    cache.SetStringAsync(cacheKey, JsonSerializer.Serialize(orders), cacheEntryOptions);
+                }
+            }
+
+            return orders;
+        }
+
+        //private OrderDto MapOrderToOrderDto(Order order)
+        //{
+        //    if (order == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    var orderDto = new OrderDto
+        //    {
+        //        OrderId = order.Id,
+        //        CustomerId = order.CustomerId,
+        //        OrderDate = order.OrderDate,
+        //        TotalAmount = order.TotalAmount,
+        //        Items = order.Items?.Select(item => MapOrderItemToOrderItemDto(item)).ToList()
+        //    };
+
+        //    return orderDto;
+        //}
+
+        //private OrderItemDto MapOrderItemToOrderItemDto(OrderItem orderItem)
+        //{
+        //    if (orderItem == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    return new OrderItemDto
+        //    {
+        //        ProductName = orderItem.ProductName,
+        //        Quantity = orderItem.Quantity,
+        //        Price = orderItem.Price
+        //    };
+        //}
     }
 }

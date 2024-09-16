@@ -25,7 +25,7 @@ namespace OrderManagement.CustomerContext.Infrastructure.Persistence.Customers
 
         public Customer GetById(Guid customerId)
         {
-            return Set.Single(a => a.Id == customerId);
+            return Set.SingleOrDefault(a => a.Id == customerId);
         }
 
         public void UpdateCustomer(Customer customer)
@@ -36,6 +36,11 @@ namespace OrderManagement.CustomerContext.Infrastructure.Persistence.Customers
         public void DeleteCustomer(Customer customer)
         {
             Delete(customer);
+        }
+
+        public void AddOrder(Order order) 
+        {
+            DbContext.Set<Order>().Add(order);
         }
     }
 }

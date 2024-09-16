@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OrderManagement.ReadModel.Context\OrderManagement.ReadModel.Context.csproj" />
+  </ItemGroup>
+
 </Project>

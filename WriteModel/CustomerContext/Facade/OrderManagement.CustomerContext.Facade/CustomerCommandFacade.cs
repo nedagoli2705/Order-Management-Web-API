@@ -6,7 +6,7 @@ using OrderManagement.CustomerContext.Facade.Contract;
 
 namespace OrderManagement.CustomerContext.Facade
 {
-    [Route("api/Customer")]
+    [Route("api/Customer/[action]")]
     [ApiController]
     public class CustomerCommandFacade : FacadeCommandBase, ICustomerCommandFacade
     {
@@ -28,6 +28,24 @@ namespace OrderManagement.CustomerContext.Facade
 
         [HttpDelete]
         public void DeleteCustomer(CustomerDeleteCommand command)
+        {
+            CommandBus.Dispatch(command);
+        }
+
+        [HttpPost]
+        public void AddOrderToCustomer(AddOrderToCustomerCommand command)
+        {
+            CommandBus.Dispatch(command);
+        }
+
+        [HttpPatch]
+        public void UpdateOrderOfCustomer(UpdateOrderOfCustomerCommand command)
+        {
+            CommandBus.Dispatch(command);
+        }
+
+        [HttpDelete]
+        public void DeleteOrderFromCustomer(DeleteOrderFromCustomerCommand command)
         {
             CommandBus.Dispatch(command);
         }
