@@ -61,6 +61,15 @@ namespace OrderManagement.CustomerContext.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer Is Required..
+        /// </summary>
+        public static string CustomerIsRequired {
+            get {
+                return ResourceManager.GetString("CustomerIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to National code is Duplicated..
         /// </summary>
         public static string DuplicatedNationalCode {
