@@ -1,0 +1,1 @@
+Scaffold-DbContext "Server=(localdb)\\mssqllocaldb;initial catalog=OrderManagement;integrated security=SSPI;" Microsoft.EntityFrameworkCore.SqlServer -ContextDir Models -OutPutDir Models -Project OrderManagement.ReadModel.Context -Context CustomerContext -force

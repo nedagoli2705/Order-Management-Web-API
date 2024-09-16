@@ -141,4 +141,13 @@
   <data name="NationalCodeShouldBeDigitCharacters" xml:space="preserve">
     <value>National code should be digit characters.</value>
   </data>
+  <data name="OrderDateIsNotValid" xml:space="preserve">
+    <value>Order Date Is Not Valid.</value>
+  </data>
+  <data name="OrderShouldHaveAtLeastOneItem" xml:space="preserve">
+    <value>Order Should Have At Least One Item</value>
+  </data>
+  <data name="UnableToAddNullOrderToCustomer" xml:space="preserve">
+    <value>Unable To Add Null Order To Customer.</value>
+  </data>
 </root>

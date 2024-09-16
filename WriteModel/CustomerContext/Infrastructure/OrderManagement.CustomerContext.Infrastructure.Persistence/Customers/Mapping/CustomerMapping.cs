@@ -1,4 +1,5 @@
 ﻿using Framework.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OrderManagement.CustomerContext.Domain.Customers;
 using System;

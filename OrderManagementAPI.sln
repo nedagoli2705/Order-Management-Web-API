@@ -61,13 +61,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.Api", "Api\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.CustomerContext.Domain.Services", "WriteModel\CustomerContext\Domain\OrderManagement.CustomerContext.Domain.Services\OrderManagement.CustomerContext.Domain.Services.csproj", "{2BC704B0-BFD3-49CA-ADBF-0C7AC40BD4FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.ReadModel.Configuration", "ReadModel\OrderManagement.ReadModel.Configuration\OrderManagement.ReadModel.Configuration.csproj", "{1370DAF3-C4F5-4146-898A-6C316F10E981}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.ReadModel.Configuration", "ReadModel\OrderManagement.ReadModel.Configuration\OrderManagement.ReadModel.Configuration.csproj", "{1370DAF3-C4F5-4146-898A-6C316F10E981}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.ReadModel.Context", "ReadModel\OrderManagement.ReadModel.Context\OrderManagement.ReadModel.Context.csproj", "{D0352233-9A8A-4D33-837F-6CCE34CF5606}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.ReadModel.Context", "ReadModel\OrderManagement.ReadModel.Context\OrderManagement.ReadModel.Context.csproj", "{D0352233-9A8A-4D33-837F-6CCE34CF5606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.ReadModel.Queries.Contracts", "ReadModel\OrderManagement.ReadModel.Queries.Contracts\OrderManagement.ReadModel.Queries.Contracts.csproj", "{D4DAF689-EBE0-40B9-B27A-1DF1FAD3C54F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.ReadModel.Queries.Contracts", "ReadModel\OrderManagement.ReadModel.Queries.Contracts\OrderManagement.ReadModel.Queries.Contracts.csproj", "{D4DAF689-EBE0-40B9-B27A-1DF1FAD3C54F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.ReadModel.Queries.Facade", "ReadModel\OrderManagement.ReadModel.Queries.Facade\OrderManagement.ReadModel.Queries.Facade.csproj", "{6768B99D-CB4D-4949-9BF1-5B5F39FDB991}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.ReadModel.Queries.Facade", "ReadModel\OrderManagement.ReadModel.Queries.Facade\OrderManagement.ReadModel.Queries.Facade.csproj", "{6768B99D-CB4D-4949-9BF1-5B5F39FDB991}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItem", "SolutionItem", "{A41F6950-E043-4BE8-97F3-FEF1422A2C43}"
+	ProjectSection(SolutionItems) = preProject
+		gdb.bat = gdb.bat
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -133,6 +133,50 @@ namespace OrderManagement.CustomerContext.Domain.Tests.Customers
             Assert.Equal("1010101010", customer.NationalCode);
         }
 
+        [Fact]
+        public void AddOrder_OrderIsAddedToList()
+        {
+            // Arrange
+            var customer = CreateDefaultCustomer();
+
+
+            var mockCustomerExistanceChecker = new Mock<ICustomerExistanceChecker>();
+            mockCustomerExistanceChecker.Setup(x => x.IsCustomerExisted(It.IsAny<Guid>())).Returns(true);
+
+            var order = new Order(mockCustomerExistanceChecker.Object, Guid.NewGuid(), DateTime.Now, new List<OrderItem>() {
+                new OrderItem("Product1", 5)
+            });
+
+            // Act
+            customer.AddOrder(order);
+
+            // Assert
+            Assert.Contains(order, customer.Orders);
+        }
+
+        [Fact]
+        public void AddNullOrder_ThrowException()
+        {
+            // Arrange
+            var customer = CreateDefaultCustomer();
+
+
+            var mockCustomerExistanceChecker = new Mock<ICustomerExistanceChecker>();
+            mockCustomerExistanceChecker.Setup(x => x.IsCustomerExisted(It.IsAny<Guid>())).Returns(true);
+
+            var order = new Order(mockCustomerExistanceChecker.Object, Guid.NewGuid(), DateTime.Now, new List<OrderItem>() {
+                new OrderItem("Product1", 5)
+            });
+
+            // Act
+            customer.AddOrder(order);
+
+            // Assert
+            Assert.Throws<UnableToAddNullOrderToCustomerException>(() =>
+                customer.AddOrder(null));
+        }
+
+
         private Customer CreateDefaultCustomer(
             INationalCodeDuplicationChecker nationalCodeDuplicationChecker = null,
             string firstName = "Neda",

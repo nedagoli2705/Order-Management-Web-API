@@ -12,4 +12,5 @@ namespace OrderManagement.CustomerContext.Domain.Customers.Exceptions
     {
         public override string Message => ExceptionResource.CustomerIsRequired;
     }
+
 }

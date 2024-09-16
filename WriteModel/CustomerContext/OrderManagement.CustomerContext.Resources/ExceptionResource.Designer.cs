@@ -131,5 +131,32 @@ namespace OrderManagement.CustomerContext.Resources {
                 return ResourceManager.GetString("NationalCodeShouldBeDigitCharacters", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order Date Is Not Valid..
+        /// </summary>
+        public static string OrderDateIsNotValid {
+            get {
+                return ResourceManager.GetString("OrderDateIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order Should Have At Least One Item.
+        /// </summary>
+        public static string OrderShouldHaveAtLeastOneItem {
+            get {
+                return ResourceManager.GetString("OrderShouldHaveAtLeastOneItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable To Add Null Order To Customer..
+        /// </summary>
+        public static string UnableToAddNullOrderToCustomer {
+            get {
+                return ResourceManager.GetString("UnableToAddNullOrderToCustomer", resourceCulture);
+            }
+        }
     }
 }
