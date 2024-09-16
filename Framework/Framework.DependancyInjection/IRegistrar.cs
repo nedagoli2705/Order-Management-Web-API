@@ -4,6 +4,6 @@ namespace Framework.DependencyInjection
 {
     public interface IRegistrar
     {
-        void Register(IServiceCollection services, string connectionString);
+        void Register(IServiceCollection services, string writeConnectionString, string readConnectionString);
     }
 }

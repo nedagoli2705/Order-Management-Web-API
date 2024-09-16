@@ -64,11 +64,12 @@ app.Run();
 void Registrar(WebApplicationBuilder builder, AssemblyHelper assemblyHelper, string envName)
 {
 
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    var writeConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    var readConnectionString = builder.Configuration.GetConnectionString("RedisConnection");
 
     var registrars = assemblyHelper.GetInstanceByInterface(typeof(IRegistrar));
     foreach (IRegistrar registrar in registrars)
-        registrar.Register(builder.Services, connectionString);
+        registrar.Register(builder.Services, writeConnectionString, readConnectionString);
 }
 
 

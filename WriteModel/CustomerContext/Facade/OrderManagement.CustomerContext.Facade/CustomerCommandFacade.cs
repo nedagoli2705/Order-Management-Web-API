@@ -6,7 +6,7 @@ using OrderManagement.CustomerContext.Facade.Contract;
 
 namespace OrderManagement.CustomerContext.Facade
 {
-    [Route("api/Customer/[action]")]
+    [Route("api/Customer")]
     [ApiController]
     public class CustomerCommandFacade : FacadeCommandBase, ICustomerCommandFacade
     {
@@ -20,7 +20,7 @@ namespace OrderManagement.CustomerContext.Facade
             CommandBus.Dispatch(command);
         }
 
-        [HttpPost]
+        [HttpPatch]
         public void UpdateCustomer(CustomerUpdateCommand command)
         {
             CommandBus.Dispatch(command);

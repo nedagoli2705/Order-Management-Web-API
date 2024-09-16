@@ -10,9 +10,9 @@ namespace OrderManagement.CustomerContext.Configuration
 {
     public class Registrar : RegistrarBase<Registrar>, IRegistrar
     {
-        public override void Register(IServiceCollection services, string connectionString)
+        public override void Register(IServiceCollection services, string writeConnectionString, string readConnectionString)
         {
-            base.Register(services, connectionString);
+            base.Register(services, writeConnectionString, readConnectionString);
         }
     }
 }

@@ -26,9 +26,9 @@ namespace Framework.DependencyInjection
         }
 
 
-        public virtual void Register(IServiceCollection services, string connectionString)
+        public virtual void Register(IServiceCollection services, string writeConnectionString, string readConnectionString)
         {
-            RegisterPersistence(services, connectionString);
+            RegisterPersistence(services, writeConnectionString);
             RegisterFramework(services);
             RegisterRepositories(services);
             RegisterServices(services);

@@ -8,6 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
@@ -15,6 +19,8 @@
     <ProjectReference Include="..\..\Framework\Framework.AssemblyHelper\Framework.AssemblyHelper.csproj" />
     <ProjectReference Include="..\..\Framework\Framework.DependancyInjection\Framework.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\Framework\Framework.Facade\Framework.Facade.csproj" />
+    <ProjectReference Include="..\..\ReadModel\OrderManagement.ReadModel.Configuration\OrderManagement.ReadModel.Configuration.csproj" />
+    <ProjectReference Include="..\..\ReadModel\OrderManagement.ReadModel.Context\OrderManagement.ReadModel.Context.csproj" />
     <ProjectReference Include="..\..\WriteModel\CustomerContext\OrderManagement.CustomerContext.Configuration\OrderManagement.CustomerContext.Configuration.csproj" />
   </ItemGroup>
 
